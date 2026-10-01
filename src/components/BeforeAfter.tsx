@@ -6,7 +6,9 @@ import { projects } from "@/data/projects";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import { SectionHeading } from "./SectionHeading";
 
-const comparisons = projects.filter((p) => p.beforeAfter);
+const comparisons = projects
+  .filter((p) => p.beforeAfter)
+  .sort((a, b) => Number(b.service === "kitchen") - Number(a.service === "kitchen"));
 
 export function BeforeAfter() {
   const [active, setActive] = useState(0);

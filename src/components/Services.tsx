@@ -68,14 +68,14 @@ export function Services() {
                     className="object-cover transition-transform duration-[1.2s] ease-out-soft group-hover:scale-[1.04]"
                   />
                 </span>
-                <span className="flex flex-1 items-end justify-between gap-4 p-5 sm:p-6">
-                  <span>
-                    <span className="block font-serif text-2xl text-forest-900">{s.title}</span>
-                    <span className="mt-2 block text-[15px] leading-relaxed text-stone">{s.copy}</span>
-                  </span>
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full border border-gold-500/60 text-gold-600 transition-colors group-hover:border-forest-900 group-hover:bg-forest-900 group-hover:text-gold-300">
-                    <ArrowRightIcon className="size-4" />
-                    <span className="sr-only">Explore {s.title.toLowerCase()} work</span>
+                <span className="flex flex-1 flex-col p-5 sm:p-6">
+                  <span className="block font-serif text-2xl text-forest-900">{s.title}</span>
+                  <span className="mt-2 flex flex-1 items-end justify-between gap-4">
+                    <span className="block self-start text-[15px] leading-relaxed text-stone">{s.copy}</span>
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full border border-gold-500/60 text-gold-600 transition-colors group-hover:border-forest-900 group-hover:bg-forest-900 group-hover:text-gold-300">
+                      <ArrowRightIcon className="size-4" />
+                      <span className="sr-only">Explore {s.title.toLowerCase()} work</span>
+                    </span>
                   </span>
                 </span>
               </button>

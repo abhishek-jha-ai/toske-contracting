@@ -188,7 +188,7 @@ export function EstimateWizard() {
               </div>
             )}
 
-            <div className="relative min-h-[440px] px-6 py-7 sm:px-9 sm:py-9">
+            <div className={`relative px-6 py-7 sm:px-9 sm:py-9 ${status !== "sent" && step < 3 ? "min-h-[480px] pb-28" : "min-h-[440px]"}`}>
               <AnimatePresence mode="wait" custom={dir} initial={false}>
                 {status === "sent" ? (
                   <motion.div key="sent" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-start py-6">
@@ -367,6 +367,13 @@ export function EstimateWizard() {
                   </motion.div>
                 )}
               </AnimatePresence>
+              {status !== "sent" && step < 3 && (
+                <p className="absolute inset-x-6 bottom-6 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-cream-200 pt-5 text-[13px] text-stone sm:inset-x-9 sm:bottom-8">
+                  <span className="inline-flex items-center gap-1.5"><CheckIcon className="size-4 text-gold-600" /> Free estimate</span>
+                  <span className="inline-flex items-center gap-1.5"><CheckIcon className="size-4 text-gold-600" /> About a minute</span>
+                  <span className="inline-flex items-center gap-1.5"><CheckIcon className="size-4 text-gold-600" /> PA & NJ</span>
+                </p>
+              )}
             </div>
           </div>
         </div>

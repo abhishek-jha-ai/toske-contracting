@@ -10,14 +10,13 @@ export function Hero() {
         src={images.kitchenNavy}
         alt="Remodeled kitchen with a navy island, marble countertop and glass pendant lights"
         preload
-        fetchPriority="high"
         quality={75}
-        sizes="100vw"
+        sizes="(max-width: 1023px) 190vh, 100vw"
         placeholder="blur"
         className="absolute inset-0 -z-10 size-full object-cover object-[68%_center] sm:object-center"
       />
       {/* Legibility overlays */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-forest-950/95 via-forest-950/55 to-black/30 lg:bg-gradient-to-r lg:from-black/80 lg:via-black/45 lg:to-black/0" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-forest-950/95 via-forest-950/50 to-black/25 lg:bg-gradient-to-r lg:from-black/80 lg:via-black/45 lg:to-black/0" />
       <div className="absolute inset-x-0 bottom-0 -z-10 hidden h-40 bg-gradient-to-t from-black/50 to-transparent lg:block" />
 
       <div className="mx-auto flex min-h-[min(100svh,880px)] max-w-[1240px] flex-col justify-end px-5 pb-8 pt-32 sm:px-8 lg:min-h-[min(100svh,820px)] lg:justify-center lg:pb-14 lg:pt-36">
