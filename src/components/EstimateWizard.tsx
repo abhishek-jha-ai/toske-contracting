@@ -48,6 +48,11 @@ export function EstimateWizard() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const reduceMotion = useReducedMotion();
 
+  const updateContact = (key: keyof Contact, value: string) => {
+    setContact((c) => ({ ...c, [key]: value }));
+    if (errors[key]) setErrors((e) => ({ ...e, [key]: undefined }));
+  };
+
   const markStarted = (source: string) => {
     if (started.current) return;
     started.current = true;
@@ -299,7 +304,7 @@ export function EstimateWizard() {
                               name="name"
                               autoComplete="name"
                               value={contact.name}
-                              onChange={(e) => setContact({ ...contact, name: e.target.value })}
+                              onChange={(e) => updateContact("name", e.target.value)}
                             />
                           </Field>
                           <Field label="Phone" required error={errors.phone}>
@@ -310,7 +315,7 @@ export function EstimateWizard() {
                               autoComplete="tel-national"
                               placeholder="(555) 555-5555"
                               value={contact.phone}
-                              onChange={(e) => setContact({ ...contact, phone: formatPhone(e.target.value) })}
+                              onChange={(e) => updateContact("phone", formatPhone(e.target.value))}
                             />
                           </Field>
                           <Field label="Email" error={errors.email}>
@@ -320,7 +325,7 @@ export function EstimateWizard() {
                               inputMode="email"
                               autoComplete="email"
                               value={contact.email}
-                              onChange={(e) => setContact({ ...contact, email: e.target.value })}
+                              onChange={(e) => updateContact("email", e.target.value)}
                             />
                           </Field>
                           <Field label="ZIP code" error={errors.zip}>
@@ -330,7 +335,7 @@ export function EstimateWizard() {
                               autoComplete="postal-code"
                               maxLength={5}
                               value={contact.zip}
-                              onChange={(e) => setContact({ ...contact, zip: e.target.value.replace(/\D/g, "").slice(0, 5) })}
+                              onChange={(e) => updateContact("zip", e.target.value.replace(/\D/g, "").slice(0, 5))}
                             />
                           </Field>
                           <Field label="Project description" className="sm:col-span-2">
@@ -339,7 +344,7 @@ export function EstimateWizard() {
                               rows={3}
                               placeholder="A few words about the space and what you’d like to change"
                               value={contact.description}
-                              onChange={(e) => setContact({ ...contact, description: e.target.value })}
+                              onChange={(e) => updateContact("description", e.target.value)}
                             />
                           </Field>
 

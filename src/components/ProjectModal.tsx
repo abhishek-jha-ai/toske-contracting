@@ -19,7 +19,6 @@ type Props = {
 export function ProjectModal({ project, onClose, onNavigate, position }: Props) {
   const [photo, setPhoto] = useState(0);
   const [view, setView] = useState<"photos" | "compare">("photos");
-  const closeRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const isOpen = project !== null;
@@ -36,17 +35,20 @@ export function ProjectModal({ project, onClose, onNavigate, position }: Props) 
     if (!isOpen) return;
     const previouslyFocused = document.activeElement as HTMLElement | null;
     document.documentElement.style.overflow = "hidden";
-    closeRef.current?.focus();
+    dialogRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "Tab" && dialogRef.current) {
-        const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])',
-        );
+        const focusables = [
+          ...dialogRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])',
+          ),
+        ].filter((el) => el.offsetParent !== null);
+        if (focusables.length === 0) return;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
+        if (e.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) {
           e.preventDefault();
           last.focus();
         } else if (!e.shiftKey && document.activeElement === last) {
@@ -80,7 +82,8 @@ export function ProjectModal({ project, onClose, onNavigate, position }: Props) 
             role="dialog"
             aria-modal="true"
             aria-labelledby="project-dialog-title"
-            className="relative flex w-full max-w-[1180px] flex-col overflow-y-auto bg-cream-50 text-ink sm:max-h-[min(92vh,820px)] sm:rounded-xl lg:flex-row lg:overflow-hidden"
+            tabIndex={-1}
+            className="relative flex w-full max-w-[1180px] flex-col overflow-y-auto bg-cream-50 outline-none text-ink sm:max-h-[min(92vh,820px)] sm:rounded-xl lg:flex-row lg:overflow-hidden"
             initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
@@ -154,11 +157,10 @@ export function ProjectModal({ project, onClose, onNavigate, position }: Props) 
                   )}
                 </p>
                 <button
-                  ref={closeRef}
                   type="button"
                   onClick={onClose}
                   aria-label="Close project"
-                  className="-mr-2 -mt-2 grid size-11 shrink-0 place-items-center rounded-full text-forest-900 transition-colors hover:bg-cream-200"
+                  className="-mr-2 -mt-2 hidden size-11 shrink-0 place-items-center rounded-full text-forest-900 transition-colors hover:bg-cream-200 sm:grid"
                 >
                   <CloseIcon className="size-5" />
                 </button>

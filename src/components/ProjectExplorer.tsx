@@ -123,7 +123,7 @@ export function ProjectExplorer() {
         <div
           role="radiogroup"
           aria-label="Project type"
-          className="no-scrollbar -mx-5 mt-10 flex snap-x gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:grid-cols-5 sm:overflow-visible sm:px-0"
+          className="no-scrollbar -mx-5 mt-10 flex snap-x gap-3 overflow-x-auto px-5 pb-1 sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0"
         >
           {options.map((o) => {
             const selected = o.key === active;
@@ -134,7 +134,7 @@ export function ProjectExplorer() {
                 role="radio"
                 aria-checked={selected}
                 onClick={() => select(o.key, "explorer")}
-                className={`group flex shrink-0 snap-start items-center gap-3 rounded-lg border p-2 pr-4 text-left transition-colors duration-300 sm:pr-3 ${
+                className={`group flex shrink-0 snap-start items-center gap-3 rounded-lg border p-2 pr-4 text-left transition-colors duration-300 lg:pr-3 ${
                   selected
                     ? "border-forest-900 bg-forest-900 text-cream-50"
                     : "border-cream-300 bg-white text-forest-900 hover:border-forest-700/40"
