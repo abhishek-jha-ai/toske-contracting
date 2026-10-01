@@ -21,12 +21,12 @@ export function Hero() {
 
       <div className="mx-auto flex min-h-[min(100svh,880px)] max-w-[1240px] flex-col justify-end px-5 pb-8 pt-32 sm:px-8 lg:min-h-[min(100svh,820px)] lg:justify-center lg:pb-14 lg:pt-36">
         <div className="max-w-[640px]">
-          <p className="eyebrow text-cream-100/90 [animation:rise_.9s_var(--ease-out-soft)_both]">
+          <p className="eyebrow text-cream-100/90">
             Licensed General Contractor
           </p>
           <h1
             id="hero-title"
-            className="mt-4 font-serif text-[clamp(2.75rem,10vw,5.25rem)] font-medium leading-[0.98] tracking-[-0.015em] text-white [animation:rise_.9s_.08s_var(--ease-out-soft)_both]"
+            className="mt-4 font-serif text-[clamp(2.75rem,10vw,5.25rem)] font-medium leading-[0.98] tracking-[-0.015em] text-white"
           >
             High-End
             <span className="block text-gold-400">Home Renovations</span>

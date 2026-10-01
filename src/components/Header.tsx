@@ -53,7 +53,7 @@ export function Header() {
           scrolled ? "h-16" : "h-[76px] lg:h-[92px]"
         }`}
       >
-        <a href="#top" aria-label={`${site.name} — home`} className="shrink-0" onClick={() => setOpen(false)}>
+        <a href="#top" className="shrink-0" onClick={() => setOpen(false)}>
           <Logo className={`origin-left transition-transform duration-500 ${scrolled ? "scale-[0.86]" : "lg:scale-110"}`} />
         </a>
 
